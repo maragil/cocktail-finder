@@ -33,9 +33,7 @@ fetch(url)
 //Pintar los elementos de la lista en el HTML: dentro del <ul>
 //necesito un for porq dentro de cada DRINKS hay otro listado
 function renderListCocktails(coctel){
-
     let html = '';
-
     for (const eachDrink of coctel) {
         html += `<li class='js_selection' id=${eachDrink.idDrink}>
         <h3>${eachDrink.strDrink}</h3>
@@ -49,12 +47,14 @@ function renderListCocktails(coctel){
 //selecciona todos los <li> q tengan la clase js_selection (selección de la usuaria)
 
 function handleClick(ev){
+    console.log(ev.currentTarget.id);
+    ev.currentTarget.classList.toggle('selected');//para q le añada o le quite la clase selected
 }
 
 function addEventToCoctel(){//añade los eventos a los cocteles y se ejecuta dp de q se pinten
 
-const selectedItems  = document.querySelectorAll('.js_selection');
-for (const eachItem of selectedItems) {
-    eachItem.addEventListener('click', handleClick);
-}
+    const selectedItems  = document.querySelectorAll('.js_selection');
+    for (const eachItem of selectedItems) {
+        eachItem.addEventListener('click', handleClick);
+    }
 }
