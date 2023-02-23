@@ -24,22 +24,21 @@ fetch(url)
     .then(data =>{
         listCocktailsData = data;
 
-        renderlistCocktails(listCocktailsData.drinks);
+        renderListCocktails(listCocktailsData.drinks);
 
 })
 
 //Pintar los elementos de la lista en el HTML: dentro del <ul>
 //necesito un for porq dentro de cada DRINKS hay otro listado
+function renderListCocktails(coctel){
 
-function renderlistCocktails(coctel){
+    let html = '';
 
-let html = '';
-
-for (const eachdrink of coctel) {
-    html += `<li>
-    <h3>${eachdrink.strDrink}</h3>
-    <img src="${eachdrink.strDrinkThumb}" alt="imagen del cóctel">
-    </li>`
-}
-listCocktails.innerHTML = html;
+    for (const eachDrink of coctel) {
+        html += `<li>
+        <h3>${eachDrink.strDrink}</h3>
+        <img src="${eachDrink.strDrinkThumb}" alt="Imagen del cóctel" class="img">
+        </li>`
+    }
+    listCocktails.innerHTML = html;
 }

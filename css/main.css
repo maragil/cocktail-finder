@@ -1,0 +1,14 @@
+.img{
+    height: 100px;
+    width: 90px;
+}
+
+.section{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+}
+
+.list{
+    text-align: center;
+}
