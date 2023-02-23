@@ -24,7 +24,9 @@ fetch(url)
     .then(data =>{
         listCocktailsData = data;
 
-        renderListCocktails(listCocktailsData.drinks);
+        renderListCocktails(listCocktailsData.drinks);//pinta los elementos en el HTML
+        addEventToCoctel();//añade los eventos a los cócteles
+
 
 })
 
@@ -35,10 +37,24 @@ function renderListCocktails(coctel){
     let html = '';
 
     for (const eachDrink of coctel) {
-        html += `<li>
+        html += `<li class='js_selection' id=${eachDrink.idDrink}>
         <h3>${eachDrink.strDrink}</h3>
         <img src="${eachDrink.strDrinkThumb}" alt="Imagen del cóctel" class="img">
         </li>`
     }
     listCocktails.innerHTML = html;
+}
+
+//EVENTO: al hacer click se resalta la opción elegida
+//selecciona todos los <li> q tengan la clase js_selection (selección de la usuaria)
+
+function handleClick(ev){
+}
+
+function addEventToCoctel(){//añade los eventos a los cocteles y se ejecuta dp de q se pinten
+
+const selectedItems  = document.querySelectorAll('.js_selection');
+for (const eachItem of selectedItems) {
+    eachItem.addEventListener('click', handleClick);
+}
 }
