@@ -36,8 +36,7 @@ fetch(url)
 
 })
 
-//Pintar los elementos de la lista en el HTML: dentro del <ul>
-function renderListCocktails(listCocktailsData){
+function renderListCocktails(listCocktailsData){ //Pintar los elementos de la lista en el HTML: dentro del <ul>
     let html = '';
     let img = 'https://via.placeholder.com/140x130';
 
@@ -55,8 +54,8 @@ function renderListCocktails(listCocktailsData){
 
 }
 
-//pinta el listado de FAVORITOS en el html
-function renderFavListCocktails(listCocktailsData){
+
+function renderFavListCocktails(listCocktailsData){ //pinta el listado de FAVORITOS en el html
     let html = '';
     let img = 'https://via.placeholder.com/140x130';
 
@@ -74,12 +73,6 @@ function renderFavListCocktails(listCocktailsData){
 
 }
 
-
-
-
-
-
-
 //EVENTO: al hacer click se resalta la opción elegida
 
 function handleClick(ev){
@@ -88,18 +81,18 @@ function handleClick(ev){
 
 
 //FAVORITOS
-//Buscar por id en el listado de cócteles los q tienen el id con el currentTarget: 
+//Buscar por id en el listado de cócteles los q tienen el id con el currentTarget:
 
 //FIND(devuleve el primer objeto q cumpla la condición)
 const favCocktails = listCocktailsData.find(eachDrink => eachDrink.idDrink === idSelected);//busca por cada coctel nos quedamos con el q el id currentTarget=id del listado data
 
+const indexCocktail = listFavCocktailsData.findIndex(eachDrink => eachDrink.idDrink === idSelected);//si está en FAv se quite y si no está lo agregue:FINDINDEX:devuelve la posición dnd está el elemento, o -1 sino está
 
+if(indexCocktail === -1){//no está en el listado de FAV, entonces PUSH
+    listFavCocktailsData.push(favCocktails);//guardar en listado de favoritos:PUSH
 
-//poner en listado de favoritos:PUSH
-listFavCocktailsData.push(favCocktails);
-
-renderFavListCocktails(listFavCocktailsData);
-
+renderFavListCocktails(listFavCocktailsData); //F q pinta lista FAV
+    }
 }
 
 
