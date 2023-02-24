@@ -22,11 +22,17 @@ const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini';
 const urlSearch = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 
 let listCocktailsData = []; //lista de cocteles que vienen del servidor
-// let listFavCocktailsData = [];
-let listFavCocktailsData = JSON.parse(localStorage.getItem("misfavs"));
-//lista de cocteles FAVORITOS que vienen del servidor
-renderFavListCocktails(listFavCocktailsData);
 
+let listFavCocktailsData = [];
+
+const cocktailStore = JSON.parse(localStorage.getItem("myfavs"));
+if (cocktailStore){
+    listFavCocktailsData = cocktailStore;
+renderFavListCocktails(listFavCocktailsData);
+}
+
+//renderFavListCocktails(listFavCocktailsData);
+//"let listFavCocktailsData"----> lista de cocteles FAVORITOS que vienen del servidor
 
 
 //FETCH
@@ -101,7 +107,7 @@ const indexCocktail = listFavCocktailsData.findIndex(eachDrink => eachDrink.id =
         listFavCocktailsData.splice(indexCocktail,1);//a partir de esa posición elimina solo 1
     }
         renderFavListCocktails(listFavCocktailsData);//F q pinta lista FAV
-        localStorage.setItem("misfavs", JSON.stringify(listFavCocktailsData));
+        localStorage.setItem("myfavs", JSON.stringify(listFavCocktailsData));//guarda los datos en LS en el momento q se clica a FAV
 }
 
 
