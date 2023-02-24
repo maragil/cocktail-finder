@@ -55,6 +55,31 @@ function renderListCocktails(listCocktailsData){
 
 }
 
+//pinta el listado de FAVORITOS en el html
+function renderFavListCocktails(listCocktailsData){
+    let html = '';
+    let img = 'https://via.placeholder.com/140x130';
+
+    for (const eachDrink of listCocktailsData) { //q recorra el listado
+        if(eachDrink.strDrinkThumb != ''){ //cóctel sin imagen
+            img = eachDrink.strDrinkThumb;
+        }
+        html += `<li class='js_selection' id=${eachDrink.idDrink}>
+        <h3>${eachDrink.strDrink}</h3>
+        <img src="${img}" alt="Imagen del cóctel" class="img">
+        </li>`
+    }
+    listFavCocktails.innerHTML = html;
+    addEventToCoctel();       //añade los eventos a los cócteles
+
+}
+
+
+
+
+
+
+
 //EVENTO: al hacer click se resalta la opción elegida
 
 function handleClick(ev){
@@ -63,11 +88,18 @@ function handleClick(ev){
 
 
 //FAVORITOS
-//Buscar por id en el listado de cócteles los q tienen el id con el currentTarget: FIND(devuleve el primer objeto q cumpla la condición)
+//Buscar por id en el listado de cócteles los q tienen el id con el currentTarget: 
 
+//FIND(devuleve el primer objeto q cumpla la condición)
 const favCocktails = listCocktailsData.find(eachDrink => eachDrink.idDrink === idSelected);//busca por cada coctel nos quedamos con el q el id currentTarget=id del listado data
 
-console.log(favCocktails);
+
+
+//poner en listado de favoritos:PUSH
+listFavCocktailsData.push(favCocktails);
+
+renderFavListCocktails(listFavCocktailsData);
+
 }
 
 
