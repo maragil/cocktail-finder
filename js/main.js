@@ -79,7 +79,7 @@ function handleClick(ev){
     ev.currentTarget.classList.toggle('selected');//para q le añada o le quite la clase selected
     const idSelected = ev.currentTarget.id;
 
-
+console.log(listCocktailsData)
 //FAVORITOS
 //Buscar por id en el listado de cócteles los q tienen el id con el currentTarget:
 
@@ -89,14 +89,13 @@ const favCocktails = listCocktailsData.find(eachDrink => eachDrink.idDrink === i
 const indexCocktail = listFavCocktailsData.findIndex(eachDrink => eachDrink.idDrink === idSelected);//si está en FAv se quite y si no está lo agregue:FINDINDEX:devuelve la posición dnd está el elemento, o -1 sino está
 //indexCocktail contiene la posición dnd está la paleta
 
-if(indexCocktail === -1){//no está en el listado de FAV, entonces PUSH
-    listFavCocktailsData.push(favCocktails);//guardar en listado de favoritos:PUSH
-    renderFavListCocktails(listFavCocktailsData); //F q pinta lista FAV
-}else{//si está en el listado de FAVs se elimine:SPLICE: elimina un elemento a partir de una posición
+    if(indexCocktail === -1){//no está en el listado de FAV, entonces PUSH
+        listFavCocktailsData.push(favCocktails);//guardar en listado de favoritos:PUSH
+    }else{//si está en el listado de FAVs se elimine:SPLICE: elimina un elemento a partir de una posición
 
-    listFavCocktailsData.splice(indexCocktail,1);//a partir de esa posición elimina solo 1
-    renderFavListCocktails(listFavCocktailsData);
+        listFavCocktailsData.splice(indexCocktail,1);//a partir de esa posición elimina solo 1
     }
+        renderFavListCocktails(listFavCocktailsData);//F q pinta lista FAV
 }
 
 
@@ -121,9 +120,9 @@ function handleClickBtn(ev){
     .then((response) => response.json())
     .then((data) => {
 
-        listCocktailsData = data;
+        listCocktailsData = data.drinks;
 
-        renderListCocktails(listCocktailsData.drinks);
+        renderListCocktails(listCocktailsData);
     }
     )}
 
