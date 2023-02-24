@@ -87,11 +87,15 @@ function handleClick(ev){
 const favCocktails = listCocktailsData.find(eachDrink => eachDrink.idDrink === idSelected);//busca por cada coctel nos quedamos con el q el id currentTarget=id del listado data
 
 const indexCocktail = listFavCocktailsData.findIndex(eachDrink => eachDrink.idDrink === idSelected);//si está en FAv se quite y si no está lo agregue:FINDINDEX:devuelve la posición dnd está el elemento, o -1 sino está
+//indexCocktail contiene la posición dnd está la paleta
 
 if(indexCocktail === -1){//no está en el listado de FAV, entonces PUSH
     listFavCocktailsData.push(favCocktails);//guardar en listado de favoritos:PUSH
+    renderFavListCocktails(listFavCocktailsData); //F q pinta lista FAV
+}else{//si está en el listado de FAVs se elimine:SPLICE: elimina un elemento a partir de una posición
 
-renderFavListCocktails(listFavCocktailsData); //F q pinta lista FAV
+    listFavCocktailsData.splice(indexCocktail,1);//a partir de esa posición elimina solo 1
+    renderFavListCocktails(listFavCocktailsData);
     }
 }
 
