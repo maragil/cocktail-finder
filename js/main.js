@@ -30,8 +30,11 @@ let listFavCocktailsData = []; //lista de cocteles FAVORITOS que vienen del serv
 fetch(url)
     .then(response => response.json())
     .then(data =>{
-        listCocktailsData = data.drinks;
-
+        listCocktailsData = data.drinks.map((drink) =>({
+            name: drink.strDrink,
+            id: drink.idDrink,
+            picture: drink.strDrinkThumb,
+        }))
         renderListCocktails(listCocktailsData);//pinta los elementos en el HTML
 
 })
@@ -41,11 +44,11 @@ function renderListCocktails(listCocktailsData){ //Pintar los elementos de la li
     let img = 'https://via.placeholder.com/140x130';
 
     for (const eachDrink of listCocktailsData) { //q recorra el listado
-        if(eachDrink.strDrinkThumb != ''){ //cóctel sin imagen
-            img = eachDrink.strDrinkThumb;
+        if(eachDrink.picture != ''){ //cóctel sin imagen
+            img = eachDrink.picture;
         }
-        html += `<li class='js_selection' id=${eachDrink.idDrink}>
-        <h3>${eachDrink.strDrink}</h3>
+        html += `<li class='js_selection' id=${eachDrink.id}>
+        <h3>${eachDrink.name}</h3>
         <img src="${img}" alt="Imagen del cóctel" class="img">
         </li>`
     }
@@ -60,11 +63,11 @@ function renderFavListCocktails(listCocktailsData){ //pinta el listado de FAVORI
     let img = 'https://via.placeholder.com/140x130';
 
     for (const eachDrink of listCocktailsData) { //q recorra el listado
-        if(eachDrink.strDrinkThumb != ''){ //cóctel sin imagen
-            img = eachDrink.strDrinkThumb;
+        if(eachDrink.picture != ''){ //cóctel sin imagen
+            img = eachDrink.picture;
         }
-        html += `<li class='js_selection' id=${eachDrink.idDrink}>
-        <h3>${eachDrink.strDrink}</h3>
+        html += `<li class='js_selection' id=${eachDrink.id}>
+        <h3>${eachDrink.name}</h3>
         <img src="${img}" alt="Imagen del cóctel" class="img">
         </li>`
     }
@@ -79,14 +82,13 @@ function handleClick(ev){
     ev.currentTarget.classList.toggle('selected');//para q le añada o le quite la clase selected
     const idSelected = ev.currentTarget.id;
 
-console.log(listCocktailsData)
 //FAVORITOS
 //Buscar por id en el listado de cócteles los q tienen el id con el currentTarget:
 
 //FIND(devuleve el primer objeto q cumpla la condición)
-const favCocktails = listCocktailsData.find(eachDrink => eachDrink.idDrink === idSelected);//busca por cada coctel nos quedamos con el q el id currentTarget=id del listado data
+const favCocktails = listCocktailsData.find(eachDrink => eachDrink.id === idSelected);//busca por cada coctel nos quedamos con el q el id currentTarget=id del listado data
 
-const indexCocktail = listFavCocktailsData.findIndex(eachDrink => eachDrink.idDrink === idSelected);//si está en FAv se quite y si no está lo agregue:FINDINDEX:devuelve la posición dnd está el elemento, o -1 sino está
+const indexCocktail = listFavCocktailsData.findIndex(eachDrink => eachDrink.id === idSelected);//si está en FAv se quite y si no está lo agregue:FINDINDEX:devuelve la posición dnd está el elemento, o -1 sino está
 //indexCocktail contiene la posición dnd está la paleta
 
     if(indexCocktail === -1){//no está en el listado de FAV, entonces PUSH
@@ -117,10 +119,13 @@ function handleClickBtn(ev){
     const searchValue = inputValue.value;
 
     fetch(`${urlSearch}${searchValue}`)//url + búsqueda usuaria
-    .then((response) => response.json())
-    .then((data) => {
-
-        listCocktailsData = data.drinks;
+    .then(response => response.json())
+    .then(data =>{
+        listCocktailsData = data.drinks.map((drink) =>({
+            name: drink.strDrink,
+            id: drink.idDrink,
+            picture: drink.strDrinkThumb,
+        }))
 
         renderListCocktails(listCocktailsData);
     }
