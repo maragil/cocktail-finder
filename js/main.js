@@ -34,10 +34,15 @@ fetch(url)
 //necesito un for porq dentro de cada DRINKS hay otro listado
 function renderListCocktails(coctel){
     let html = '';
+    let img = 'https://via.placeholder.com/140x130';
+
     for (const eachDrink of coctel) {
+        if(eachDrink.strDrinkThumb != ''){ //cóctel sin imagen
+            img = eachDrink.strDrinkThumb;
+        }
         html += `<li class='js_selection' id=${eachDrink.idDrink}>
         <h3>${eachDrink.strDrink}</h3>
-        <img src="${eachDrink.strDrinkThumb}" alt="Imagen del cóctel" class="img">
+        <img src="${img}" alt="Imagen del cóctel" class="img">
         </li>`
     }
     listCocktails.innerHTML = html;
@@ -70,7 +75,6 @@ function handleClickBtn(ev){
     fetch(`${urlSearch}${searchValue}`)//url + búsqueda usuaria
     .then((response) => response.json())
     .then((data) => {
-        console.log(data);
 
         listCocktailsData = data;
 
