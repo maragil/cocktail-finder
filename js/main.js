@@ -13,8 +13,9 @@
 
 
 //Variables
-const listCocktails = document.querySelector('.js_list_cocktails'); //listado donde se va a pintar la lista de cócteles en HTML
+const listCocktails = document.querySelector('.js_list-cocktails'); //listado donde se va a pintar la lista de cócteles en HTML
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini';
+const urlSearch = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 let listCocktailsData = []; //lista de cocteles que vienen del servidor
 const btnSearch = document.querySelector('.js_btn');
 const inputValue = document.querySelector('.js_input')
@@ -26,8 +27,6 @@ fetch(url)
         listCocktailsData = data;
 
         renderListCocktails(listCocktailsData.drinks);//pinta los elementos en el HTML
-        addEventToCoctel();//añade los eventos a los cócteles
-
 
 })
 
@@ -42,6 +41,8 @@ function renderListCocktails(coctel){
         </li>`
     }
     listCocktails.innerHTML = html;
+    addEventToCoctel();       //añade los eventos a los cócteles
+
 }
 
 //EVENTO: al hacer click se resalta la opción elegida
@@ -60,11 +61,23 @@ function addEventToCoctel(){//añade los eventos a los cocteles y se ejecuta dp 
     }
 }
 
+
+//Búsqueda de otros cócteles
 function handleClickBtn(ev){
     ev.preventDefault();
     const searchValue = inputValue.value;
-    console.log(searchValue);
 
-}
+    fetch(`${urlSearch}${searchValue}`)//url + búsqueda usuaria
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data);
+
+        listCocktailsData = data;
+
+        renderListCocktails(listCocktailsData.drinks);
+    }
+    )}
 
 btnSearch.addEventListener('click', handleClickBtn);
+
+//MAP para quedarme con los elementos del array, pero con un objeto de los datos q interesan, limpiando los datos del servidor q no hacen falta
