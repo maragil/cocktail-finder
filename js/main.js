@@ -13,30 +13,35 @@
 
 
 //Variables
-const listCocktails = document.querySelector('.js_list-cocktails'); //listado donde se va a pintar la lista de cócteles en HTML
-const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini';
-const urlSearch = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
-let listCocktailsData = []; //lista de cocteles que vienen del servidor
+const listCocktails = document.querySelector('.js_list-cocktails'); //listado para pintar los cócteles en HTML
+const listFavCocktails = document.querySelector('.js_list-cocktails_favorites'); //lista para pintar FAVORITOS
 const btnSearch = document.querySelector('.js_btn');
 const inputValue = document.querySelector('.js_input')
+
+const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini';
+const urlSearch = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+
+let listCocktailsData = []; //lista de cocteles que vienen del servidor
+let listFavCocktailsData = []; //lista de cocteles FAVORITOS que vienen del servidor
+
+
 
 //FETCH
 fetch(url)
     .then(response => response.json())
     .then(data =>{
-        listCocktailsData = data;
+        listCocktailsData = data.drinks;
 
-        renderListCocktails(listCocktailsData.drinks);//pinta los elementos en el HTML
+        renderListCocktails(listCocktailsData);//pinta los elementos en el HTML
 
 })
 
 //Pintar los elementos de la lista en el HTML: dentro del <ul>
-//necesito un for porq dentro de cada DRINKS hay otro listado
-function renderListCocktails(coctel){
+function renderListCocktails(listCocktailsData){
     let html = '';
     let img = 'https://via.placeholder.com/140x130';
 
-    for (const eachDrink of coctel) {
+    for (const eachDrink of listCocktailsData) { //q recorra el listado
         if(eachDrink.strDrinkThumb != ''){ //cóctel sin imagen
             img = eachDrink.strDrinkThumb;
         }
@@ -51,20 +56,31 @@ function renderListCocktails(coctel){
 }
 
 //EVENTO: al hacer click se resalta la opción elegida
-//selecciona todos los <li> q tengan la clase js_selection (selección de la usuaria)
 
 function handleClick(ev){
-    console.log(ev.currentTarget.id);
     ev.currentTarget.classList.toggle('selected');//para q le añada o le quite la clase selected
+    const idSelected = ev.currentTarget.id;
+
+
+//FAVORITOS
+//Buscar por id en el listado de cócteles los q tienen el id con el currentTarget: FIND(devuleve el primer objeto q cumpla la condición)
+
+const favCocktails = listCocktailsData.find(eachDrink => eachDrink.idDrink === idSelected);//busca por cada coctel nos quedamos con el q el id currentTarget=id del listado data
+
+console.log(favCocktails);
 }
+
 
 function addEventToCoctel(){//añade los eventos a los cocteles y se ejecuta dp de q se pinten
 
-    const selectedItems  = document.querySelectorAll('.js_selection');
+    const selectedItems  = document.querySelectorAll('.js_selection');//selecciona todos los <li> q tengan la clase js_selection (selección de la usuaria)
+
     for (const eachItem of selectedItems) {
         eachItem.addEventListener('click', handleClick);
     }
 }
+
+
 
 
 //Búsqueda de otros cócteles
@@ -84,4 +100,3 @@ function handleClickBtn(ev){
 
 btnSearch.addEventListener('click', handleClickBtn);
 
-//MAP para quedarme con los elementos del array, pero con un objeto de los datos q interesan, limpiando los datos del servidor q no hacen falta
