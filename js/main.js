@@ -16,7 +16,8 @@
 const listCocktails = document.querySelector('.js_list_cocktails'); //listado donde se va a pintar la lista de cócteles en HTML
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini';
 let listCocktailsData = []; //lista de cocteles que vienen del servidor
-
+const btnSearch = document.querySelector('.js_btn');
+const inputValue = document.querySelector('.js_input')
 
 //FETCH
 fetch(url)
@@ -58,3 +59,12 @@ function addEventToCoctel(){//añade los eventos a los cocteles y se ejecuta dp 
         eachItem.addEventListener('click', handleClick);
     }
 }
+
+function handleClickBtn(ev){
+    ev.preventDefault();
+    const searchValue = inputValue.value;
+    console.log(searchValue);
+
+}
+
+btnSearch.addEventListener('click', handleClickBtn);
