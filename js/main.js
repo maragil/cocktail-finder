@@ -16,6 +16,7 @@
 const listCocktails = document.querySelector('.js_list-cocktails'); //listado para pintar los cócteles en HTML
 const listFavCocktails = document.querySelector('.js_list-cocktails_favorites'); //lista para pintar FAVORITOS
 const btnSearch = document.querySelector('.js_btn');
+const resetBtn = document.querySelector('.js_reset');
 const inputValue = document.querySelector('.js_input');
 
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini';
@@ -143,3 +144,9 @@ function handleClickBtn(ev){
 
 btnSearch.addEventListener('click', handleClickBtn);
 
+function reset(ev){
+    ev.preventDefault();
+    listFavCocktails.innerHTML = '';
+    localStorage.removeItem("myfavs");
+}
+resetBtn.addEventListener('click', reset);
