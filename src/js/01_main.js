@@ -25,27 +25,30 @@ fetch(url)
 
 function renderListCocktails(listCocktailsData){ //Pintar los elementos de la lista en el HTML: dentro del <ul>
     let html = '';
-    let img = 'https://via.placeholder.com/140x130';
 
     for (const eachDrink of listCocktailsData) { //q recorra el listado
+        let htmlClass= '';
+        let img = 'https://via.placeholder.com/140x130';
         if(eachDrink.picture != ''){ //cóctel sin imagen
             img = eachDrink.picture;
         }
-        html += `<div><span><li class='js_selection' id=${eachDrink.id}>
+        const favorite = listFavCocktailsData.find((favorite) => favorite.id === eachDrink.id);
+        if (favorite != null) {
+            htmlClass = 'selected';
+        }
+        html += `<div><span><li class="js_selection ${htmlClass}" id=${eachDrink.id}>
         <h3>${eachDrink.name}</h3>
         <img src="${img}" alt="Imagen del cóctel" class="img">
         </li></span></div>`
     }
     listCocktails.innerHTML = html;
     addEventToCoctel();       //añade los eventos a los cócteles
-
 }
 
 
 function renderFavListCocktails(listCocktailsData){ //pinta el listado de FAVORITOS en el html
     let html = '';
     let img = 'https://via.placeholder.com/140x130';
-
     for (const eachDrink of listCocktailsData) { //q recorra el listado
         if(eachDrink.picture != ''){ //cóctel sin imagen
             img = eachDrink.picture;
@@ -119,13 +122,3 @@ function handleClickBtn(ev){
 
 btnSearch.addEventListener('click', handleClickBtn);
 
-
-//BOTÓN DE RESET
-
-function reset(ev){
-    ev.preventDefault();
-    listFavCocktails.innerHTML = '';
-    inputValue.value = '';
-    localStorage.removeItem("myfavs");
-}
-resetBtn.addEventListener('click', reset);
