@@ -169,7 +169,8 @@ table {
 
 .section {
   display: flex;
-  justify-content: space-around; }
+  justify-content: space-around;
+  text-align: center; }
 
 .list {
   display: flex;
@@ -193,20 +194,25 @@ table {
   height: 140px;
   width: 130px; }
 
-html {
-  font-size: 62.5%; }
-
-.selected {
-  background-color: violet; }
+.name {
+  font-size: 25px;
+  text-align: center;
+  padding: 15px; }
 
 .close {
   position: relative; }
 
 .close .close_btn {
-  width: 26px;
-  top: 36px;
-  right: 88px;
+  right: 135px;
+  top: 34px;
+  font-size: 25px;
   position: absolute;
   cursor: pointer; }
+
+html {
+  font-size: 62.5%; }
+
+.selected {
+  background-color: violet; }
 
 /*# sourceMappingURL=main.css.map */

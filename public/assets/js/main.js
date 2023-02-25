@@ -51,7 +51,7 @@ function renderListCocktails(listCocktailsData){ //Pintar los elementos de la li
             htmlClass = 'selected';
         }
         html += `<div><span><li class="js_selection ${htmlClass}" id=${eachDrink.id}>
-        <h3>${eachDrink.name}</h3>
+        <h3 class="name">${eachDrink.name}</h3>
         <img src="${img}" alt="Imagen del cóctel" class="img">
         </li></span></div>`
     }
@@ -69,7 +69,7 @@ function renderFavListCocktails(listCocktailsData){ //pinta el listado de FAVORI
         }
         html += `<div><span class="close"><i class="fa-regular fa-circle-xmark close_btn js_cross"></i>
         <li class='js_selection' id=${eachDrink.id}>
-        <h3>${eachDrink.name}</h3>
+        <h3 class="name">${eachDrink.name}</h3>
         <img src="${img}" alt="Imagen del cóctel" class="img">
         </li></span></div>`
     }
