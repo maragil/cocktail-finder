@@ -45,10 +45,10 @@ function renderListCocktails(listCocktailsData){ //Pintar los elementos de la li
         if(eachDrink.picture != ''){ //cóctel sin imagen
             img = eachDrink.picture;
         }
-        html += `<li class='js_selection' id=${eachDrink.id}>
+        html += `<div><span><li class='js_selection' id=${eachDrink.id}>
         <h3>${eachDrink.name}</h3>
         <img src="${img}" alt="Imagen del cóctel" class="img">
-        </li>`
+        </li></span></div>`
     }
     listCocktails.innerHTML = html;
     addEventToCoctel();       //añade los eventos a los cócteles
@@ -64,10 +64,11 @@ function renderFavListCocktails(listCocktailsData){ //pinta el listado de FAVORI
         if(eachDrink.picture != ''){ //cóctel sin imagen
             img = eachDrink.picture;
         }
-        html += `<li class='js_selection' id=${eachDrink.id}>
+        html += `<div><span class="close"><i class="fa-regular fa-circle-xmark close_btn js_cross"></i>
+        <li class='js_selection' id=${eachDrink.id}>
         <h3>${eachDrink.name}</h3>
         <img src="${img}" alt="Imagen del cóctel" class="img">
-        </li>`
+        </li></span></div>`
     }
     listFavCocktails.innerHTML = html;
     addEventToCoctel();       //añade los eventos a los cócteles
@@ -144,5 +145,11 @@ function reset(ev){
 resetBtn.addEventListener('click', reset);
 'use strict';
 
-
+function reset(ev){
+    ev.preventDefault();
+    listFavCocktails.innerHTML = '';
+    inputValue.value = '';
+    localStorage.removeItem("myfavs");
+}
+resetBtn.addEventListener('click', reset);
 //# sourceMappingURL=main.js.map

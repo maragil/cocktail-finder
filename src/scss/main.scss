@@ -1,5 +1,6 @@
 @import 'core/reset';
 @import 'layout/header';
+@import 'layout/main';
 @import 'layout/footer';
 
 .img{
@@ -25,4 +26,14 @@
 .favorites{
     border-right: solid 1px darkgrey;
     padding: 0 1em;
+}
+.close{
+    position: relative;
+}
+.close .close_btn{
+    width: 26px;
+    top: 36px;
+    right: 88px;
+    position: absolute;
+    cursor: pointer;
 }
