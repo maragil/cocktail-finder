@@ -1,6 +1,5 @@
 'use strict';
 
-//Variables
 const listCocktails = document.querySelector('.js_list-cocktails');
 const listFavCocktails = document.querySelector('.js_list-cocktails_favorites');
 const searchBtn = document.querySelector('.js_btn');
