@@ -63,12 +63,14 @@ function renderFavListCocktails(listCocktailsData){ //pinta el listado de FAVORI
         addEventToCoctel();       //añade los eventos a los cócteles
     }
 
+    
     //EVENTO: al hacer click se resalta la opción elegida
 
 function handleClick(ev){
-    ev.currentTarget.classList.toggle('selected');//para q le añada o le quite la clase selected
+    // ev.currentTarget.classList.toggle('selected');//para q le añada o le quite la clase selected
     const idSelected = ev.currentTarget.id;
 
+    document.getElementById(idSelected).classList.toggle('selected');//añade o quita la clase por el id, no donde ocurre el evento, porq si el evento ocurre en fav no va a quitar la selección en renderlist, de esta manera quita la clase a todos los elementos q tengan el id dnd ocurre el evento.
 //FAVORITOS
 //Buscar por id en el listado de cócteles los q tienen el id con el currentTarget:
 
@@ -85,7 +87,7 @@ const indexCocktail = listFavCocktailsData.findIndex(eachDrink => eachDrink.id =
         listFavCocktailsData.splice(indexCocktail,1);//a partir de esa posición elimina solo 1
     }
         renderFavListCocktails(listFavCocktailsData);//F q pinta lista FAV
-        renderListCocktails(listCocktailsData);//quita el sombreado eliminando el coctel desde fav
+        // renderListCocktails(listCocktailsData);//quita el sombreado eliminando el coctel desde fav
         localStorage.setItem("myfavs", JSON.stringify(listFavCocktailsData));//guarda los datos en LS en el momento q se clica a FAV
 }
 
