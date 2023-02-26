@@ -1,16 +1,3 @@
-'use strict';
-
-//Variables
-const listCocktails = document.querySelector('.js_list-cocktails');
-const listFavCocktails = document.querySelector('.js_list-cocktails_favorites');
-const searchBtn = document.querySelector('.js_btn');
-const resetBtn = document.querySelector('.js_reset');
-const inputValue = document.querySelector('.js_input');
-const urlSearch = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
-const cocktailStore = JSON.parse(localStorage.getItem("myfavs"));
-
-let listCocktailsData = [];
-let listFavCocktailsData = [];
 function fetchCoctails(searchValue){
     fetch(`${urlSearch}${searchValue}`)//url + búsqueda usuaria
     .then(response => response.json())
@@ -105,27 +92,3 @@ function handleClickBtn(ev){
 
     fetchCoctails(searchValue);
 }
-if (cocktailStore){
-    listFavCocktailsData = cocktailStore;
-renderFavListCocktails(listFavCocktailsData);
-}
-
-fetchCoctails("martini");
-
-searchBtn.addEventListener('click', handleClickBtn);
-
-
-'use strict';
-
-function reset(ev){
-    ev.preventDefault();
-    inputValue.value = '';
-    localStorage.removeItem("myfavs");
-    listFavCocktailsData =[];//lleva fav a vacío
-    renderFavListCocktails(listFavCocktailsData);//hace render de fav vacio
-    fetchCoctails("martini");
-}
-resetBtn.addEventListener('click', reset);
-
-
-//# sourceMappingURL=main.js.map
