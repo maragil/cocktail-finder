@@ -41,6 +41,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 30px;
+    gap: 10px;
 }
 
 .favorites{
@@ -48,17 +49,16 @@
     flex-direction: column;
     align-items: center;
 
-.favorites__title{
+&__title{
     color: darkred;
     text-shadow: 3px 1px 5px #ff7000;
     font-size: 3.5rem;
     }
-}
 
-.favorites__list{
+&__list{
     margin-top: 30px;
 }
-
+}
 .img{
     height: 140px;
     width: 130px;
@@ -67,16 +67,20 @@
 .name{
 font-size: 25px;
 text-align: center;
-padding: 15px;
 }
 
 .close{
     position: relative;
 }
 .close .close_btn{
-    right: 135px;
-    top: 34px;
-   font-size: 25px;
+    right: 120px;
+    top: 40px;
+    font-size: 25px;
     position: absolute;
     cursor: pointer;
+}
+
+li{
+    width: 130px;
+    height: 197px;
 }

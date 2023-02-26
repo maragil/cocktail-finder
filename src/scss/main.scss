@@ -8,12 +8,9 @@ html{
 }
 
 
-// .list{
-//     text-align: center;
-//     list-style-type: none;
-// }
-
 .selected{
-    background-color: violet;
+    color: darkred;
+    font-weight: bold;
+    box-shadow: 0 0 35px 0 darkred, 0 6px 35px 0 darkred;
 }
 
