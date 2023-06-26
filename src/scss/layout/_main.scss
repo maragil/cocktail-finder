@@ -1,19 +1,28 @@
+.main{
+    background: linear-gradient(to left top, rgb(96, 165, 250), rgb(52, 211, 153))
+}
+
+.input-section{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5rem;
+    gap: 2rem;
+}
+
 .title{
     color: darkred;
     font-size: 4rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-    padding: 25px;
+    font-weight: 500;
     text-shadow: 3px 4px 5px #ff7000;
 }
 
 .input{
     background-color: bisque;
     border-color: darkred;
-    border-radius: 10px;
-    margin-left: 80px;
-    margin-bottom: 55px;
-    padding: 12px 10px 12px 10px;
+    border-radius: 1rem;
+    padding: 0.9rem;
+    font-family: 'Playfair Display', serif;
 }
 .input::placeholder{
     color: darkred;
@@ -24,13 +33,15 @@
     color: darkred ;
     background-color: bisque ;
     box-shadow: 0 0 16px 0 #ff7000, 0 6px 20px 0 #ff7000;
-    border-radius: 20px;
+    border-radius: 2rem;
     cursor: pointer;
-    margin-left: 10px;
-    padding: 10px 15px 10px 15px;
+    margin: 1rem;
+    padding: 0.8rem ;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif;;
 }
 
-.section{
+.finder-section{
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-evenly;

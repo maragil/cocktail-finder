@@ -4,10 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="../../src/images/favicon.png" type="image/x-icon">
   <title>La coctelería de María</title>
-  <!-- Google Fonts
-      <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
-    -->
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display:wght@400;500;700&family=Raleway&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="./assets/css/main.css" />
   <link rel="icon" href="./assets/images/favicon.png" />
   <script src="https://kit.fontawesome.com/a5f3fa4005.js" crossorigin="anonymous"></script>
@@ -19,17 +22,19 @@
 
   </header>
 
-  <main>
+  <main class="main">
 
-      <h1 class="title">Buscador Cócteles</h1>
+      <section class="input-section">
+      <h1 class="title">Busca tu cóctel</h1>
 
       <form name="Buscador cócteles">
           <input type="text" placeholder="Buscar" class="js_input input"/>
           <input type="button" value="Buscar" class="js_btn btn">
           <input type="button" value="Reset" class="js_reset btn">
       </form>
+      </section>
 
-      <section class="section">
+      <section class="finder-section">
 
       <article class="list">
       <ul class="list js_list-cocktails">
