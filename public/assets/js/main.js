@@ -54,7 +54,7 @@ function renderFavListCocktails(listCocktailsData){
         if(eachDrink.picture != ''){
             img = eachDrink.picture;
         }
-        html += `<div><span class="close"><i class="fa-regular fa-circle-xmark close_btn js_cross js_selection" id=${eachDrink.id}></i>
+        html += `<div><span class="close"><i class="fa-regular fa-circle-xmark close_btn js_cross js_selection" id=${eachDrink.id} title="Quitar de favoritos"></i>
         <li id=${eachDrink.id}>
         <h3 class="name">${eachDrink.name}</h3>
         <img src="${img}" alt="Imagen del cóctel" class="img">

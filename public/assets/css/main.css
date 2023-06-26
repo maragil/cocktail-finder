@@ -150,10 +150,11 @@ table {
 
 .input {
   background-color: bisque;
-  border-color: darkred;
+  border: none;
   border-radius: 1rem;
   padding: 0.9rem;
-  font-family: 'Playfair Display', serif; }
+  font-family: 'Playfair Display', serif;
+  box-shadow: 0 0 16px 0 #ff7000, 0 6px 20px 0 #ff7000; }
 
 .input::-moz-placeholder {
   color: darkred; }
@@ -201,29 +202,31 @@ table {
     margin-top: 30px; }
 
 .img {
-  height: 140px;
-  width: 130px; }
+  width: 130px;
+  border-radius: 100%;
+  cursor: pointer; }
 
 .name {
   font-size: 25px;
   text-align: center;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  padding-top: 30px;
+  padding-bottom: 15px;
   color: darkred;
-  font-weight: bold; }
+  font-weight: bold;
+  font-family: 'Playfair Display', serif; }
 
 .close {
-  position: relative; }
-
-.close .close_btn {
-  right: 125px;
-  top: 184px;
+  display: flex;
+  flex-direction: column-reverse;
   font-size: 25px;
-  position: absolute;
-  cursor: pointer;
-  background-color: darkred;
   color: bisque;
   border-radius: 20px; }
+
+.fa-regular {
+  color: darkred;
+  font-size: 30px;
+  text-align: initial;
+  position: absolute; }
 
 html {
   font-size: 62.5%;
@@ -232,7 +235,7 @@ html {
 .selected {
   color: darkred;
   font-weight: bold;
-  box-shadow: 0 0 35px 0 darkred, 0 6px 35px 0 darkred;
-  text-shadow: 3px 1px 5px #ff7000; }
+  text-shadow: 3px 3px 5px #ff7000;
+  text-decoration: underline; }
 
 /*# sourceMappingURL=main.css.map */

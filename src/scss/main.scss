@@ -13,6 +13,7 @@ html{
 .selected{
     color: darkred;
     font-weight: bold;
-    box-shadow: 0 0 35px 0 darkred, 0 6px 35px 0 darkred;
-    text-shadow: 3px 1px 5px #ff7000;
+    // box-shadow: 0 0 35px 0 darkred, 0 6px 35px 0 darkred;
+    text-shadow: 3px 3px 5px #ff7000;
+    text-decoration:underline;
 }
