@@ -10,7 +10,12 @@ Esta evaluación tuvo como objetivo la creación de un proyecto que abarcara los
 - Permitir marcar y desmarcar las bebidas como favoritas.
 - Almacenar estas bebidas selecionadas en el Local Storage.
 
-# api de cocteles
+## 💠 Uso de la API.
+
+Esta aplicación se integra con una API externa para obtener los datos. Aquí tienes la URL de la API por si deseas explorar más a fondo:
+```js
+https://www.thecocktaildb.com/api/json/v1/1/search.php?s=
+```
 
 ## 🚀 Instalación.
 
