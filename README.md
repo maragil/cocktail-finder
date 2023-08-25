@@ -33,7 +33,7 @@ Para poder ejecutar y utilizar este proyecto, sigue los siguientes pasos:
 
 4. Inicia la aplicación con el comando `npm start`. Esto pondrá en marcha la aplicación y podrás acceder a ella a través de tu navegador en `http://localhost:3000`.
    
-## 📦 Despliegue 
+## 📦 Despliegue.
 
 La aplicación está configurada para que se pueda desplegar de manera sencilla en GitHub Pages siguiendo los siguientes pasos:
   1. Asegúrate de que todos los cambios necesarios estén confirmados y guardados en tu repositorio.
@@ -60,7 +60,7 @@ Este proyecto ha sido creado utilizando una combinación de herramientas y tecno
 </p>
 
 
-## ☎️ CONTACTO
+## ☎️ CONTACTO.
 ¡Espero que te hayas divertido buscando tus cócteles favoritos! 💚
 
 Este y otros proyectos los puedes encontrar en mi porfolio: <https://www.maragil.com> 
